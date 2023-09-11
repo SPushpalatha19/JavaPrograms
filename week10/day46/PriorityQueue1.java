@@ -10,7 +10,7 @@ class PriorityQueue1
       pq.add(90);
       pq.add(10);
       //it allows duplicate values
-      //pq.add(null);
+     // pq.offer(null);
       //pq.add(null);
       //does not allows null values
       System.out.println(pq);

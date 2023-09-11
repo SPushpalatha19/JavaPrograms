@@ -8,6 +8,8 @@ class ArrayDequeue1
       ad.add("pushpa");
       ad.add("jyothi");
       ad.add("suhana");
+      ad.add("null");
+      ad.add("null");
       System.out.println(ad);
       ad.offer("latha");
       ad.offerFirst("raghu");

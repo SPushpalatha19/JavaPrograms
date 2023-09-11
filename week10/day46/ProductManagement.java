@@ -12,6 +12,13 @@ If no products are found for the given category, the program should provide an a
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
+import java.util.*;
+class NoProductFoundException extends ExceptionInInitializerError{
+  NoProductFoundException(String message)
+  {
+    super(message);
+  }
+}
 class Product
   {
     int pid;
@@ -105,11 +112,11 @@ class ProductManagement
       else
       System.out.println("Price updated");
     }
-    public void searchProduct()
+    public void searchProduct() throws NoProductFoundException
     {
       System.out.println("Enter the category type for displaying those category products");
         String category=sc.next();
-      int count=0;
+     int count=0;
       for(Product value:product)
         {
           String data=value.pcategory;
@@ -121,7 +128,8 @@ class ProductManagement
         }
       if(count==0)
       {
-        System.out.println("No such type of category products");
+        throw new NoProductFoundException("There is no such type of products related to this category");
+        //System.out.println("No such type of category products");
       }
     }
     public void displayProducts()
@@ -157,7 +165,13 @@ class ProductManagement
               pm.updatePrice();
               break;
             case 5:
+              try{
               pm.searchProduct();
+              }
+              catch(Exception e)
+                {
+                  System.out.println(e);
+                }
               break;
             case 6:
               pm.displayProducts();
